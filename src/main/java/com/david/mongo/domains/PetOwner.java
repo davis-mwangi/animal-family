@@ -5,11 +5,10 @@
  */
 package com.david.mongo.domains;
 
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.bson.types.ObjectId;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -20,19 +19,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "pets")
-public class Pets {
-
-    @Id
-    public String _id;
-    public String name;
-    public String species;
-    public String breed;
+@Document(collection ="owners")
+public class PetOwner {
+    private String _id;
+    private String firstName;
+    private String lastName;
+    private String phoneNumber;
     
     @DBRef
-    private PetOwner petOwner;
-    
-
-
-
+    private List<Pets> pets;
 }
